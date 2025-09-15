@@ -17,5 +17,15 @@ def lag():
     result = fibonacci(35)
     return f"Fibonacci(35) = {result}"
 
+@app.route('/lag/<int:number>')
+def lag_with_number(number):
+    def fibonacci(n):
+        if n <= 1:
+            return n
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+    result = fibonacci(number)
+    return f"Fibonacci({number}) = {result}"
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)
